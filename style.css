@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    overflow: hidden; /* prevents scrolling */
+    background: #ffe6f0;
+    font-family: Arial;
+}
+
+#game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#basket {
+    position: absolute;
+    bottom: 60px;
+    left: 200px;
+
+    width: 120px;     /* control size here */
+    height: 120px;    /* IMPORTANT: set height manually */
+
+    background-image: url("img/basket.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    position: absolute;;
+}
+
+#basketHitbox {
+    position: absolute;
+    bottom: 0;           /* stick to bottom */
+    left: 10px;          /* small side padding */
+    width: 100px;        /* slightly smaller */
+    height: 70px;        /* shorter than full image */
+}
+
+#basketImg {
+    width: 80px;
+    height: auto;
+}
+
+.heart {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    background-image: url("img/sziv.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 5px pink);
+}
