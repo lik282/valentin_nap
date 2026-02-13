@@ -16,8 +16,8 @@ body {
     bottom: 60px;
     left: 200px;
 
-    width: 120px;     /* control size here */
-    height: 120px;    /* IMPORTANT: set height manually */
+    width: 120px;     
+    height: 120px;    
 
     background-image: url("img/basket.png");
     background-size: contain;
@@ -30,9 +30,9 @@ body {
 #basketHitbox {
     position: absolute;
     bottom: 0;           /* stick to bottom */
-    left: 10px;          /* small side padding */
-    width: 100px;        /* slightly smaller */
-    height: 70px;        /* shorter than full image */
+    left: 10px;          
+    width: 100px;        
+    height: 70px;        
 }
 
 #basketImg {
@@ -49,4 +49,20 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     filter: drop-shadow(0 0 5px pink);
+}
+
+.fedo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    z-index: 999;
+    
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.2s ease-in-out;
 }

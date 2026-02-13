@@ -4,13 +4,19 @@ let basket = document.getElementById("basket");
 let scoreDisplay = document.getElementById("score");
 let score = 0;
 
-console.log(basket);
+let gameActive = true;
+let spawnInterval;
+
+let fedo = document.querySelector(".fedo");
+
 
 
 
 
 document.addEventListener("keydown", function(event) {
 
+    if (!gameActive) return; //stop movement if game is over
+    
     let left = basket.offsetLeft;
 
     if (event.key === "ArrowLeft" && left > 0) {
@@ -47,10 +53,13 @@ function createHeart() {
             clearInterval(fall);
             heart.remove();
         }
+        
     }, 20);
 }
 
-setInterval(createHeart, 1000);
+spawnInterval = setInterval(createHeart, 1000);
+
+
 
 function checkCollision(heart,fallInterval) {
 
@@ -75,7 +84,15 @@ function checkCollision(heart,fallInterval) {
         scoreDisplay.textContent = score;
 
         if (score === 14) {
-            alert("Valamit feloldottál ❤️❤️❤️")
+            
+            gameActive = false;
+
+            clearInterval(spawnInterval);
+
+            fedo.style.opacity = "1";
+            fedo.style.pointerEvents = "auto";
+            console.log(fedo);
         }
     }
 }
+
