@@ -1,4 +1,64 @@
 //console.log(basket);
+//a scaling
+
+let yes = document.getElementById("yes");
+let no = document.getElementById("no");
+let fedo = document.querySelector(".fedo");
+
+let yesWidth = 120;   // starting width
+let yesHeight = 60;   // starting height
+let clickCount = 0;   // track number of clicks
+
+const messages = [
+    "Légyszi?",
+    "Gondold meg még...",
+    "Tényleg nem?",
+    "Az utolsó esély!",
+    "Komolyan?!",
+    "Nagyon biztos vagy?",
+    "Nem fogod megbánni?",
+    "OK, elfogadom a választásod..."
+];
+
+no.addEventListener("click", () => {
+    // Incremental growth - each click grows more than the last
+    let growthMultiplier = 1 + clickCount * 0.3;  // 1, 1.3, 1.6, 1.9, etc.
+    yesWidth += 40 * growthMultiplier;
+    yesHeight += 30 * growthMultiplier;
+    yes.style.width = yesWidth + "px";
+    yes.style.height = yesHeight + "px";
+    yes.style.fontSize = (18 + (yesWidth - 120) / 20 * 2) + "px";  // scale font size
+    
+    // Show message
+    if (clickCount < messages.length) {
+        no.textContent = messages[clickCount];
+        no.style.animation = "none";  // reset animation
+        setTimeout(() => {
+            no.style.animation = "shake 0.3s";
+        }, 10);
+    }
+    
+    clickCount++;
+});
+
+yes.addEventListener("click", () => {
+    fedo.style.backgroundImage = "url('img/pusheen.png')";
+    fedo.style.backgroundSize = "contain";
+    fedo.style.backgroundPosition = "center";
+    fedo.style.backgroundRepeat = "no-repeat";
+    fedo.style.backgroundColor = "transparent";
+    
+    // Hide the card
+    document.querySelector("h2").style.display = "none";
+    document.getElementById("game").style.display = "none";
+    
+    let card = document.querySelector(".fedo-card");
+    if (card) card.style.display = "none";
+});
+
+
+
+
 
 let basket = document.getElementById("basket");
 let scoreDisplay = document.getElementById("score");
@@ -6,8 +66,6 @@ let score = 0;
 
 let gameActive = true;
 let spawnInterval;
-
-let fedo = document.querySelector(".fedo");
 
 
 
@@ -83,7 +141,7 @@ function checkCollision(heart,fallInterval) {
         score++;
         scoreDisplay.textContent = score;
 
-        if (score === 14) {
+        if (score === 1) {
             
             gameActive = false;
 
