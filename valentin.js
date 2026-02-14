@@ -141,7 +141,7 @@ function checkCollision(heart,fallInterval) {
         score++;
         scoreDisplay.textContent = score;
 
-        if (score === 1) {
+        if (score === 14) {
             
             gameActive = false;
 
